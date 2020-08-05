@@ -1,0 +1,40 @@
+<div class="container blur mt-3">
+    <div class="d-flex justify-content-center ">
+        <div class=" col-8  col-xl-6 autocomplete">
+
+            <div class=" m-3  ">
+                <div class="d-flex flex-column "><input id="add" type="text" class="form-control pl-4"
+                        placeholder="Search for location..." aria-label="Username" aria-describedby="basic-addon1"
+                        [(ngModel)]="locationInput" (input)="onChangeInput()"
+                        (keydown)="onKeyDownCheckIfLetter($event)">
+                    <span *ngIf="autoCompleteResults" class="">
+                        <div (click)="onChooseLocation(result)" *ngFor="let result of autoCompleteResults"
+                            class="form-control pl-4">{{result.LocalizedName}}</div>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="  weatherContainer px-sm-2 py-2">
+        <div class="d-flex justify-content-between">
+            <div class="">
+                <app-current-weather [location]="chosenLocation" [weatherStyle]="'home'"></app-current-weather>
+            </div>
+            <div (click)="onFavorites()" class="">
+               <button
+                    class="btn btn-light ml-1 d-flex justify-content-between favorites-button"><span>{{isLocationFavorite?'Remove from':'Add to'}}
+                    <span class="d-none d-sm-inline">favorites</span></span> <span class="pl-1">
+                        <img *ngIf="!isLocationFavorite" src="../../assets/icons/favorite-3-32 (1).png" alt="">
+                    <img *ngIf="isLocationFavorite" src="../../assets/icons/hearts-32.png" alt="">
+                    </span>
+                 </button></div>
+        </div>
+
+<app-forecast5days [locationKey]="chosenLocation.key"></app-forecast5days>
+    </div>
+</div>
+<button #launch type="button" class="d-none" data-toggle="modal" data-target="#messageModal">
+  </button>
+<app-modal [locationKey]="chosenLocation.key" (removeLocation)="removeLocationFromFavorites()"></app-modal>

@@ -1,0 +1,25 @@
+#add {
+    // padding: 17px;
+    // padding-left:25px;
+    // width: 300px;
+    // border: 1px solid #f5f5f5;
+    // font-size: 13px;
+    // color: gray;
+    background-image: url('../../assets/icons/search-24px.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    // outline: 0;
+  }
+  .autocomplete{
+      z-index: 99;
+      position: absolute;
+  }
+  .weatherContainer{
+      margin-top: 80px;
+  }
+  .favorites-button{
+      width:240px;
+  }
+  .blur{
+      background-color: transparentize($color:gray, $amount:0.5);
+  }

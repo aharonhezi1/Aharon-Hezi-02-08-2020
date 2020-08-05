@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import './customize-bootstrap.scss';
+
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+// $themeColor:#563d7c;
+body{
+    background-image: url(./assets/cumulus-cloud.jpg);
+}
+@media only screen and (max-width: 700px) {
+    html{
+        font-size:80%;
+        .favorites-button{
+            width:140px !important;
+        }
+    }
+}

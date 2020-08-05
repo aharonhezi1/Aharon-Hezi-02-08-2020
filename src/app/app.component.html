@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between">
+    <span class=""><a class="navbar-brand" href="#">Herolo Weather task</a>
+    </span>
+    <span class="">
+        <div class="" id="navbarNavAltMarkup">
+            <div class="navbar-nav nav nav-pills">
+                <a class="nav-item nav-link" [ngClass]="{'active':!isFavoritesRoute}" routerLink='/home'>Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" [ngClass]="{'active':isFavoritesRoute}" routerLink='/favorites'>Favorites</a>
+
+            </div>
+        </div>
+    </span>
+</nav>
+<!-- <app-home></app-home>
+<app-favorites></app-favorites> -->
+<router-outlet></router-outlet>
