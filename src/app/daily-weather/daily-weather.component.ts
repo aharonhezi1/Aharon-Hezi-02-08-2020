@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {fToC} from '../../assets/FtoC'
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-daily-weather',

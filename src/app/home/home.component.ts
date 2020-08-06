@@ -1,20 +1,18 @@
-import { Component, OnInit, Output, EventEmitter, AfterViewChecked, ChangeDetectorRef, OnChanges, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { WeatherApiService } from '../weather-api.service'
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Location } from './../models/location.model';
 import { AppState } from './../app.state';
 import * as LocationActions from './../actions/location.actions';
-import { Router, RouterEvent, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit,OnChanges {
-  // chosenLocationKey = "215854"
-  // chosenLocation = "Tel Aviv"
+export class HomeComponent implements OnInit {
+
   chosenLocation: Location={
     key:'215854',
     name:''
@@ -36,8 +34,6 @@ export class HomeComponent implements OnInit,OnChanges {
 
         ))
       })
- 
-
     } else {
       this.autoCompleteResults = null
     }
@@ -49,7 +45,6 @@ export class HomeComponent implements OnInit,OnChanges {
   onChooseLocation(value) {
     this.locationInput = value.LocalizedName
     this.autoCompleteResults = null
-    // this.chosenLocationKey = value.Key
     this.chosenLocation = { name: value.LocalizedName, key: value.Key };
     (this.store.select('location')).subscribe((locations: Location[]) => {
       this.isLocationFavorite = locations.some(location => location.key === this.chosenLocation.key)
@@ -62,9 +57,7 @@ export class HomeComponent implements OnInit,OnChanges {
     this.store.dispatch(new LocationActions.RemoveLocation(this.chosenLocation.key))
   }
   onFavorites() {
-    (this.store.select('location')).subscribe((locations: Location[]) => {
-      this.isLocationFavorite = locations.some(location => location.key === this.chosenLocation.key)
-    })
+
     if (this.isLocationFavorite) {
       this.launch.nativeElement.click()
 
@@ -72,20 +65,14 @@ export class HomeComponent implements OnInit,OnChanges {
       this.addLocationToFavorites(this.chosenLocation)
   }
   }
-  ngOnChanges(){
-    
-  }
+ 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.chosenLocation = {
         key: params['key'] || '215854',
         name: params['name'] || 'Tel Aviv'
       };
-
     });
-  
-
-
       (this.store.select('location')).subscribe((locations: Location[]) => {
         this.isLocationFavorite = locations.some(location => location.key === this.chosenLocation.key)
       })

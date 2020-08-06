@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router, NavigationEnd, RouterEvent } from '@angular/router';
 
 @Component({

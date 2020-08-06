@@ -1,9 +1,9 @@
-<div class="d-flex wrap" [ngClass]="{'blur':weatherStyle==='favorites'}" (click)="onfavorite()">
+<div class="d-flex wrap"  (click)="onfavorite()">
     <div class=""> 
            <img *ngIf="weatherStyle==='home'" src={{iconSrc}} alt=""   >
     </div>
 
-    <div [ngClass]="{'border border-primary p-2 p-sm-3':weatherStyle==='favorites'}">
+    <div [ngClass]="{'favorite-container border border-primary p-2 p-sm-3  m-2 m-sm-3 m-md-5':weatherStyle==='favorites'}">
         <div class="p-sm-1"><b>{{location.name}}</b></div>
         <div class="p-sm-1">{{temperature}}
             <span *ngIf="unit=='C'">&#8451;</span>

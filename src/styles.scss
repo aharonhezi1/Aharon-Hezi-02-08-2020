@@ -3,15 +3,20 @@
 
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
-// $themeColor:#563d7c;
 body{
     background-image: url(./assets/cumulus-cloud.jpg);
 }
 @media only screen and (max-width: 700px) {
-    html{
+    html , body{
         font-size:80%;
         .favorites-button{
             width:140px !important;
+        }
+        .favorite-container{
+            height: 120px !important;
+            width: 120px !important;
+              
+
         }
     }
 }
