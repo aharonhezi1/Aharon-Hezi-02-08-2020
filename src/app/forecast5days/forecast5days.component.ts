@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import {WeatherApiService}from '../weather-api.service'
+import {WeatherApiService}from '../services/weather-api.service'
 @Component({
   selector: 'app-forecast5days',
   templateUrl: './forecast5days.component.html',
@@ -15,8 +15,7 @@ ngOnChanges(){
     
     if(res && res.DailyForecasts) {
         this.weather5daysData = res.DailyForecasts}
-console.log(res.DailyForecasts
-);
+// console.log(res.DailyForecasts);
 
     });
 }

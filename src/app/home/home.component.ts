@@ -1,25 +1,26 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { WeatherApiService } from '../weather-api.service'
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { WeatherApiService } from '../services/weather-api.service'
 import { Store } from '@ngrx/store';
 import { Location } from './../models/location.model';
 import { AppState } from './../app.state';
 import * as LocationActions from './../actions/location.actions';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,OnDestroy {
 
   chosenLocation: Location={
-    key:'215854',
+    key:'',
     name:''
   }
   locationInput: string
   autoCompleteResults;
-  
+  storeSubscription;
   isLocationFavorite: boolean;
   @ViewChild('launch', { static: false }) launch: ElementRef;
 
@@ -73,10 +74,13 @@ export class HomeComponent implements OnInit {
         name: params['name'] || 'Tel Aviv'
       };
     });
-      (this.store.select('location')).subscribe((locations: Location[]) => {
+    this.storeSubscription=  (this.store.select('location')).subscribe((locations: Location[]) => {
         this.isLocationFavorite = locations.some(location => location.key === this.chosenLocation.key)
       })
 
+  }
+  ngOnDestroy(){
+    this.storeSubscription.unsubscribe()
   }
 
 }

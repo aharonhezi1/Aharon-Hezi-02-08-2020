@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {fToC} from '../../assets/FtoC'
-
+// import {fToC} from '../../assets/FtoC'
+import {UtilsFuncsService} from '../services/utils-funcs.service'
 @Component({
   selector: 'app-daily-weather',
   templateUrl: './daily-weather.component.html',
@@ -12,13 +12,13 @@ export class DailyWeatherComponent implements OnInit {
 icon:string;
 day:string;
 degree:number;
-  constructor() { }
+  constructor( private utilsFuncsService: UtilsFuncsService) { }
 getDayName(date){
 return (new Date(date)).toString().slice(0,3)
 }
   ngOnInit(): void {
     this.day=this.getDayName(this.dayData.Date)
-    this.degree=fToC(this.dayData.Temperature.Maximum.Value)
+    this.degree=this.utilsFuncsService.fToC(this.dayData.Temperature.Maximum.Value)
     this.icon="../../assets/icons/"+this.dayData.Day.Icon+"-s.png"
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { WeatherApiService } from '../weather-api.service';
+import { WeatherApiService } from '../services/weather-api.service';
 import { Location } from '../models/location.model'
 import { Router } from '@angular/router';
 @Component({
