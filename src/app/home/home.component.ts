@@ -6,6 +6,7 @@ import { AppState } from './../app.state';
 import * as LocationActions from './../actions/location.actions';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { delay } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   constructor(private weatherApiServise: WeatherApiService, private store: Store<AppState>, private route: ActivatedRoute) { }
   onChangeInput() {
     if (this.locationInput.length > 1) {
-      this.weatherApiServise.getLocation(this.locationInput).subscribe((res:any)=>{
+      this.weatherApiServise.getLocation(this.locationInput).pipe(delay(500)).subscribe((res:any)=>{
         console.log(res);
         
         this.autoCompleteResults=res.map(result=>(
