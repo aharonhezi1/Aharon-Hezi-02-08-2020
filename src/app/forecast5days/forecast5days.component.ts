@@ -15,7 +15,6 @@ ngOnChanges(){
     
     if(res && res.DailyForecasts) {
         this.weather5daysData = res.DailyForecasts}
-// console.log(res.DailyForecasts);
 
     });
 }

@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit,OnDestroy {
   onChangeInput() {
     if (this.locationInput.length > 1) {
       this.weatherApiServise.getLocation(this.locationInput).pipe(delay(500)).subscribe((res:any)=>{
-        console.log(res);
         
         this.autoCompleteResults=res.map(result=>(
           { LocalizedName: result.LocalizedName, Key: result.Key }

@@ -1,7 +1,13 @@
+@import './../customize-bootstrap.scss';
+
+
 .navbar{
     background-color: transparentize($color:gray, $amount:0.7) !important;
 
 }
 a{
     font-weight: bold !important;
+}
+.blur{
+    background-color: transparentize($color:$themeColor, $amount:0.5);
 }

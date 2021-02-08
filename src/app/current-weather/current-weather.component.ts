@@ -20,7 +20,6 @@ export class CurrentWeatherComponent implements OnInit,OnChanges {
   }
 ngOnChanges(){
   this.weatherApiServise.getCurrentWeather(this.location.key).subscribe((res: any) => {
-    console.log(res);
     
     if (res[0] && res[0].Temperature) {
       this.iconSrc = "../../assets/icons/" + res[0].WeatherIcon + "-s.png"

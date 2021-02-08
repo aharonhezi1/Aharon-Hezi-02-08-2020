@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import {fToC} from '../../assets/FtoC'
 import {UtilsFuncsService} from '../services/utils-funcs.service'
 @Component({
   selector: 'app-daily-weather',
